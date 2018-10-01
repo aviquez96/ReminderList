@@ -1,0 +1,11 @@
+<h1>Index Page</h1>
+
+
+
+<% reminders.forEach(function(reminder) { %>
+    <div>
+        <h2> <%= reminder.title %> </h2>
+        <span> <%= reminder.created %> </span>  
+        <p> <%= reminder.body %> </p>  
+    </div>
+<% }) %>

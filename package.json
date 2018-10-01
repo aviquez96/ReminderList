@@ -1,0 +1,25 @@
+{
+  "name": "reminderlist",
+  "version": "1.0.0",
+  "description": "This is going to be an online reminder platform that you can create, read, update and destroy",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aviquez96/ReminderList.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aviquez96/ReminderList/issues"
+  },
+  "homepage": "https://github.com/aviquez96/ReminderList#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.0"
+  }
+}

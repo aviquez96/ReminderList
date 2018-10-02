@@ -1,6 +1,6 @@
+<% include ./partials/header%>
+
 <h1>Index Page</h1>
-
-
 
 <% reminders.forEach(function(reminder) { %>
     <div>
@@ -9,3 +9,5 @@
         <p> <%= reminder.body %> </p>  
     </div>
 <% }) %>
+
+<% include ./partials/footer%>

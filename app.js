@@ -38,6 +38,7 @@ app.get('/', function(req, res){
     res.redirect("/reminders");
 })
 
+// REAL INDEX
 app.get('/reminders', function(req,res){
     Reminder.find({}, function(err, remindersFound) {
         if (err) {

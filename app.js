@@ -20,6 +20,8 @@ var reminderSchema = new mongoose.Schema({
 
 var Reminder = mongoose.model("Reminder", reminderSchema);
 
+// I am going to make a commit using lazygit function
+
 // Reminder.create({
 //     title: "Finish Elec 301 Mini-Project",
 //     body: "This is an individual project that explores the semantics and nature of circuits."

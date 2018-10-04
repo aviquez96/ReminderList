@@ -20,8 +20,6 @@ var reminderSchema = new mongoose.Schema({
 
 var Reminder = mongoose.model("Reminder", reminderSchema);
 
-// I am going to make a commit using lazygit function
-
 // Reminder.create({
 //     title: "Finish Elec 301 Mini-Project",
 //     body: "This is an individual project that explores the semantics and nature of circuits."
@@ -40,13 +38,31 @@ app.get('/', function(req, res){
     res.redirect("/reminders");
 })
 
-// REAL INDEX
+// REAL INDEX: This is where you retrieve your information from, and render it in the index html file
 app.get('/reminders', function(req,res){
     Reminder.find({}, function(err, remindersFound) {
         if (err) {
             console.log(err);
         } else {
             res.render("index", {reminders: remindersFound});
+        }
+    })
+})
+
+// NEW
+app.get('/reminders/new', function(req, res) {
+    res.render('new');
+})
+
+// CREATE
+app.post('/reminders', function(req,res) {
+    // Create reminder
+    Reminder.create(req.body.reminder, function(err, newReminder) {
+        if(err) {
+            res.render("new");
+        } else {
+            // redirect to /reminders
+            res.redirect('/reminders');
         }
     })
 })

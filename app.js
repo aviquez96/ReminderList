@@ -67,4 +67,15 @@ app.post('/reminders', function(req,res) {
     })
 })
 
+// SHOW
+app.get('/reminders/:id', function(req,res) {
+    Reminder.findById(req.params.id, function(err, foundReminder) {
+        if (err) {
+            res.render("/reminders");
+        } else {
+            res.render("show", {reminder: foundReminder});
+        }
+    })
+})
+
 app.listen(port,console.log("Reminder server is running!"));

@@ -1,15 +1,11 @@
 <% include ./partials/header%>
 
-<br>
-<br>
-<br>
-<br>
-
 <% reminders.forEach(function(reminder) { %>
-    <div>
+    <div style="margin-top: 5em;">
         <h2> <%= reminder.title %> </h2>
-        <span> <%= reminder.created %> </span>  
-        <p> <%= reminder.body %> </p>  
+        <span> <%= reminder.created.toDateString() %> </span>  
+        <p> <%= reminder.body.substring(0,100) %> </p>  
+        <a href="/reminders/<%= reminder._id %>">Read More</a>
     </div>
 <% }) %>
 

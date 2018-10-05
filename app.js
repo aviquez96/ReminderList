@@ -2,11 +2,14 @@ var express = require ('express');
 var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require("body-parser");
+var methodOverride = require('method-override')
 var port = 3000;
 
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
+// Command used to change post to put/delete since forms can't handle it
+app.use(methodOverride("_method"));
 
 // APP CONFIG
 mongoose.connect('mongodb://localhost/restful_reminder_app', {useNewUrlParser: true});
@@ -76,6 +79,28 @@ app.get('/reminders/:id', function(req,res) {
             res.render("show", {reminder: foundReminder});
         }
     })
+})
+
+// EDIT 
+app.get('/reminders/:id/edit', function(req, res) {
+    Reminder.findById(req.params.id, function(err, reminderFound) {
+        if (err) {
+            res.redirect('/reminders');
+        } else {
+            res.render('edit', {reminder:reminderFound});
+        }
+    })
+}) 
+
+// UPDATE
+app.put('/reminders/:id', function(req, res) {
+    Reminder.findByIdAndUpdate(req.params.id, req.body.reminder, function (err, updatedReminder){
+        if (err) {
+            res.redirect("/reminders");
+        } else {
+            res.redirect("/reminders/" + req.params.id);
+        }
+    }) 
 })
 
 app.listen(port,console.log("Reminder server is running!"));

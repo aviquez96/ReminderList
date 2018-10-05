@@ -1,0 +1,19 @@
+<% include ./partials/header%>
+
+<div class="ui main text container segment">
+    <div class="ui huge header text">Edit: <%=reminder.title%> </div>
+    <form action="/reminders/<%=reminder.id%>?_method=PUT" method="POST" class="ui form">
+        <div class="field">
+            <label>Title</label>
+            <input type="text" name="reminder[title]" value="<%=reminder.title%>">
+        </div>
+        <div class="field">
+            <label>Body</label>
+            <textarea name="reminder[body]"> <%=reminder.body%> </textarea>
+        </div>
+        <input type="submit" class="ui green basic button big">
+    </form>
+</div>
+
+
+<% include ./partials/footer%>

@@ -4,8 +4,9 @@
     <div style="margin-top: 5em;">
         <h2> <%= reminder.title %> </h2>
         <span> <%= reminder.created.toDateString() %> </span>  
-        <p> <%= reminder.body.substring(0,100) %> </p>  
+        <p> <%= reminder.body.substring(0,150) %> </p>  
         <a href="/reminders/<%= reminder._id %>">Read More</a>
+        <a href="/reminders/<%= reminder._id %>/edit">Edit</a>
     </div>
 <% }) %>
 

@@ -103,4 +103,15 @@ app.put('/reminders/:id', function(req, res) {
     }) 
 })
 
+// DELETE
+app.delete('/reminders/:id', function(req, res) {
+    Reminder.findByIdAndRemove(req.params.id, function(err) {
+        if (err) {
+            res.redirect("/reminders");
+        } else {
+            res.redirect("/reminders");
+        }
+    })
+})
+
 app.listen(port,console.log("Reminder server is running!"));

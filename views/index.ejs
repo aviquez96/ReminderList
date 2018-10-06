@@ -1,13 +1,29 @@
 <% include ./partials/header%>
 
-<% reminders.forEach(function(reminder) { %>
-    <div style="margin-top: 5em;">
-        <h2> <%= reminder.title %> </h2>
-        <span> <%= reminder.created.toDateString() %> </span>  
-        <p> <%= reminder.body.substring(0,150) %> </p>  
-        <a href="/reminders/<%= reminder._id %>">Read More</a>
-        <a href="/reminders/<%= reminder._id %>/edit">Edit</a>
+<div class="ui main text container">
+    <div class="ui huge header" RESTful Reminder App> </div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% reminders.forEach(function(reminder) { %>
+                <div class="item ">
+                    <div class="content">
+                        <a href="/reminders/<%= reminder._id %>"><%= reminder.title %></a>
+                        <div class="meta">
+                            <span> <%= reminder.created.toDateString() %></span>
+                        </div>
+                        <div class="description">
+                            <p> <%- reminder.body.substring(0,150) %>... </p> 
+                        </div>
+                        <div class="extra">
+                            <a class= "ui floated basic blue button" href="/reminders/<%= reminder._id %>">
+                                Read More <i class="right chevron icon"></i>
+                            </a>
+                        </div>
+                    </div> 
+                </div> 
+            <% }) %>
+        </div>
     </div>
-<% }) %>
+</div>
 
 <% include ./partials/footer%>

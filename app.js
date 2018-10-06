@@ -3,6 +3,7 @@ var app = express();
 var mongoose = require('mongoose');
 var bodyParser = require("body-parser");
 var methodOverride = require('method-override')
+var expressSanitizer = require('express-sanitizer')
 var port = 3000;
 
 app.set("view engine", "ejs");
@@ -60,6 +61,7 @@ app.get('/reminders/new', function(req, res) {
 // CREATE
 app.post('/reminders', function(req,res) {
     // Create reminder
+    req.body.reminder.body = req.sanitize(req.body.reminder.body);
     Reminder.create(req.body.reminder, function(err, newReminder) {
         if(err) {
             res.render("new");
@@ -94,6 +96,7 @@ app.get('/reminders/:id/edit', function(req, res) {
 
 // UPDATE
 app.put('/reminders/:id', function(req, res) {
+    req.body.reminder.body = req.sanitize(req.body.reminder.body);
     Reminder.findByIdAndUpdate(req.params.id, req.body.reminder, function (err, updatedReminder){
         if (err) {
             res.redirect("/reminders");

@@ -10,6 +10,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 // Command used to change post to put/delete since forms can't handle it
+app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
 // APP CONFIG
@@ -117,4 +118,4 @@ app.delete('/reminders/:id', function(req, res) {
     })
 })
 
-app.listen(port,console.log("Reminder server is running!"));
+app.listen(port, console.log("Reminder server is running!"));

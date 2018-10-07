@@ -12,7 +12,7 @@
                             <span> <%= reminder.created.toDateString() %></span>
                         </div>
                         <div class="description">
-                            <p> <%- reminder.body.substring(0,150) %>... </p> 
+                            <p> <%- reminder.body %> </p> 
                         </div>
                         <div class="extra">
                             <a class= "ui floated basic blue button" href="/reminders/<%= reminder._id %>">
